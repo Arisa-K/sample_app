@@ -6,6 +6,7 @@
       <p v-for="tweet in tweets" :key="tweet.id">
         {{ tweet.text }}
         {{ tweet.createdAt.toDate().toLocaleString() }}
+        <router-link v-bind:to="'/show/' + tweet.id ">このツイートをみる</router-link>
       </p>
       <pre>{{ $data }}</pre>
     </div>
@@ -56,7 +57,12 @@ export default {
        this.unsubscribe = ref.onSnapshot(snapshot => {
       let tweets = [];
       snapshot.forEach(doc => {
-        tweets.push(doc.data());
+        const tweet = {
+          id: doc.id,
+          text: doc.data().text,
+          createdAt: doc.data().createdAt
+        }
+        tweets.push(tweet);
       });
       this.tweets = tweets;
     });

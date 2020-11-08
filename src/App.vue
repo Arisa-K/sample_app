@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <Home />
+    <Header></Header>
+    <!-- <Home /> -->
+    <router-link to="/">トップへ</router-link>
+    <router-link to="/about">About</router-link>
+    <router-view></router-view>
   </div>
   
 </template>
 
 <script>
-import Home from "@/Home.vue";
+// import Home from "@/Home.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "App",
   components: {
-    Home,
+    // Home,
+    Header,
   },
   data(){
     return{
